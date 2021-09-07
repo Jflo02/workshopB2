@@ -188,10 +188,7 @@
 .fmatch-form {
   background-color: #336aff;
 }
-h1 {
-  padding: 0px 30px 30px 50px;
-  color: #336aff;
-}
+
 .form-fm {
 }
 .player {
@@ -300,4 +297,85 @@ h1 {
 .container a, .container2 a {
     text-decoration: none;
   }
+<<<<<<< HEAD
 /* Index.html  */
+=======
+/* Index.html */
+
+
+/*score.php*/
+.container3 {
+    padding: 20px;
+    border-radius: 20px;
+}
+
+
+
+h1 {
+    width: 100%;
+    text-align: center;
+    color: #336aff;
+    font-size: 50px;
+}
+.container-score {
+    background-color: #A6BEFF;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+    padding-bottom: 30px;
+}
+.container-score h2 {
+    font-size: 150px;
+    padding: 0 30px ;
+}
+.E-Rouge {
+    border-bottom: #FF0000 solid 20px;
+}
+.E-Bleu {
+    border-bottom: #0000FF solid 20px;
+}
+.container4 {
+    padding: 30px 15% 0 15%;
+    background-color: #A6BEFF;
+}
+.container-mins {
+    padding: 20px 20px 18% 20px;
+    background-color: #336AFF;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    color: #A6BEFF;
+
+}
+
+.container-mins h3 {
+    font-size: 100px;
+    color: #A6BEFF;
+    width: 100%;
+    text-align: center;
+}
+.sm-blue-line {
+    background-color: #A6BEFF;
+    border:#A6BEFF solid 5px ;
+    border-radius: 20px;
+    width: auto;
+    margin: 20px 5% 20px 5%;
+  }
+.histo-qmatch {
+    font-size:30px;
+    text-align: center;
+    padding: 5px;
+}
+.Rumble-timer{
+    width: 100%;
+}
+.Rumble-timer h4{
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+/*score.php*/
+>>>>>>> 6812ae98f8fc4a76aea5a931de335c5f519d2272

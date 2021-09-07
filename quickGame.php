@@ -17,7 +17,7 @@
     </div>
     <ul class="nav-list">
       <li>
-        <a href="#">
+        <a href="./index.php">
           <i class='bx bx-home'></i>
 
           <span class="links_name">Accueil</span>
@@ -65,7 +65,6 @@
   if (mysqli_num_rows($resultat) == 0) {
     echo "Ajouter des noms dans la base de données";
   } else {
-    echo 'hello';
     while ($row = mysqli_fetch_assoc($resultat)) {
       array_push($personnes, $row['firstName'] . " " . $row['lastName']);
     }
@@ -77,12 +76,72 @@
         $sql = 'SELECT MAX(idQuickGame) as maxId FROM quickgame';
         $resultat = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($resultat);
-        $sql = 'INSERT INTO quickgame (idQuickGame) VALUES (' . $row['maxId'] + 1 . ')';
-        $resultat = mysqli_query($conn, $sql);
-
+        $newIdQuickGame = $row['maxId'] + 1;
         //on créé la quick Game
+        // $sql = 'INSERT INTO quickgame (idQuickGame) VALUES (' . $newIdQuickGame . ')';
+        if ($_GET['end-match'] == "time") {
+          $DurationMaxUntilEnd =  date_create($_GET['temps']);
+          $sql = 'INSERT INTO quickgame (idQuickGame, DurationMaxUntilEnd, isRumble) VALUES (' . $newIdQuickGame . ', "' . date_format($DurationMaxUntilEnd, 'H:i:s') .  '", ' . $_GET['isRumble'] . ')';
+          $resultat = mysqli_query($conn, $sql);
+        } else {
+          $NumberOfGoalsNeeded = $_GET['buts'];
+          $sql = 'INSERT INTO quickgame (idQuickGame, NumberOfGoalsNeeded, isRumble) VALUES (' . $newIdQuickGame . ', ' . $NumberOfGoalsNeeded .  ', ' . $_GET['isRumble'] . ')';
+          $resultat = mysqli_query($conn, $sql);
+        }
+
+        // $sql = 'INSERT INTO quickgame (idQuickGame, DurationMaxUntilEnd, NumberOfGoalsNeeded, isRumble) VALUES (' . $newIdQuickGame . ', ' . $DurationMaxUntilEnd . ', ' . $NumberOfGoalsNeeded . ', 0)';
+        // print_r($sql);
+        // $resultat = mysqli_query($conn, $sql);
+
+
+
+
         //pr chaque joueur
+
+        // INSERT INTO quickteam (`idPlayer`, `idQuickGame`, `teamNumber`) VALUES ('1', '4', '1');
         //on recherche l'id du joueur
+        if (isset($_GET['user_name1'])) {
+          $arr = explode(' ', trim($_GET['user_name1']));
+          //on va chercher en bdd l'id de la personne
+          $sql = 'SELECT idPlayer FROM player where firstName="' . $arr[0] . '" and lastName="' .  $arr[1] . '"';
+          $resultat = mysqli_query($conn, $sql);
+          $row = mysqli_fetch_assoc($resultat);
+          $sql = 'INSERT INTO quickteam (idPlayer, idQuickGame, teamNumber) VALUES (' . $row['idPlayer'] . ', ' . $newIdQuickGame . ', ' . $_GET['equipePlayer1'] . ')';
+          $resultat = mysqli_query($conn, $sql);
+        };
+        if (isset($_GET['user_name2'])) {
+          $arr = explode(' ', trim($_GET['user_name2']));
+          //on va chercher en bdd l'id de la personne
+          $sql = 'SELECT idPlayer FROM player where firstName="' . $arr[0] . '" and lastName="' .  $arr[1] . '"';
+          $resultat = mysqli_query($conn, $sql);
+          $row = mysqli_fetch_assoc($resultat);
+          $sql = 'INSERT INTO quickteam (idPlayer, idQuickGame, teamNumber) VALUES (' . $row['idPlayer'] . ', ' . $newIdQuickGame . ', ' . $_GET['equipePlayer2'] . ')';
+          $resultat = mysqli_query($conn, $sql);
+        };
+        if (isset($_GET['user_name3'])) {
+          if (!empty($_GET['user_name3'])) {
+
+            $arr = explode(' ', trim($_GET['user_name3']));
+            //on va chercher en bdd l'id de la personne
+            $sql = 'SELECT idPlayer FROM player where firstName="' . $arr[0] . '" and lastName="' .  $arr[1] . '"';
+            $resultat = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($resultat);
+            $sql = 'INSERT INTO quickteam (idPlayer, idQuickGame, teamNumber) VALUES (' . $row['idPlayer'] . ', ' . $newIdQuickGame . ', ' . $_GET['equipePlayer3'] . ')';
+            $resultat = mysqli_query($conn, $sql);
+          }
+        };
+        if (isset($_GET['user_name4'])) {
+          if (!empty($_GET['user_name4'])) {
+
+            $arr = explode(' ', trim($_GET['user_name4']));
+            //on va chercher en bdd l'id de la personne
+            $sql = 'SELECT idPlayer FROM player where firstName="' . $arr[0] . '" and lastName="' .  $arr[1] . '"';
+            $resultat = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($resultat);
+            $sql = 'INSERT INTO quickteam (idPlayer, idQuickGame, teamNumber) VALUES (' . $row['idPlayer'] . ', ' . $newIdQuickGame . ', ' . $_GET['equipePlayer4'] . ')';
+            $resultat = mysqli_query($conn, $sql);
+          }
+        };
         //on créé une quickTeam avec id + team number + idQuickMatch
 
       default:
@@ -97,93 +156,104 @@
         <div class="player ">
           <div id="from">
             <label for="name">Ajouter le joueur n°1</label>
-            <input type="text" id="tags" name="user_name" placeholder="Nom Prenom">
+            <input type="text" id="tags" name="user_name1" placeholder="Nom Prenom">
 
 
           </div>
           <fieldset>
-            <label><input type="radio" name="equipePlayer1">Equipe n°1</label>
-            <label><input type="radio" name="equipePlayer1">Equipe n°2</label>
+            <label><input type="radio" name="equipePlayer1" value=1>Equipe n°1</label>
+            <label><input type="radio" name="equipePlayer1" value=2>Equipe n°2</label>
           </fieldset>
         </div>
         <div class="player  ">
           <div id="from  ">
             <label for="name">Ajouter le joueur n°2</label>
-            <input type="text" id="tags2" name="user_name" placeholder="Nom Prenom">
+            <input type="text" id="tags2" name="user_name2" placeholder="Nom Prenom">
           </div>
           <fieldset>
-            <label><input type="radio" name="equipePlayer2">Equipe n°1</label>
-            <label><input type="radio" name="equipePlayer2">Equipe n°2</label>
+            <label><input type="radio" name="equipePlayer2" value=1>Equipe n°1</label>
+            <label><input type="radio" name="equipePlayer2" value=2>Equipe n°2</label>
           </fieldset>
         </div>
         <div class="add-player">
           <div class="player" id="player3" style="display:none">
             <div id="from  ">
               <label for="name">Ajouter le joueur n°3</label>
-              <input type="text" id="tags3" name="user_name" placeholder="Nom Prenom">
+              <input type="text" id="tags3" name="user_name3" placeholder="Nom Prenom">
 
 
             </div>
             <fieldset>
-              <label><input type="radio" name="equipePlayer3">Equipe n°1</label>
-              <label><input type="radio" name="equipePlayer3">Equipe n°2</label>
+              <label><input type="radio" name="equipePlayer3" value=1>Equipe n°1</label>
+              <label><input type="radio" name="equipePlayer3" value=2>Equipe n°2</label>
             </fieldset>
           </div>
           <div class="player" id="player4" style="display:none">
             <div id="from  ">
               <label for="name">Ajouter le joueur n°4</label>
-              <input type="text" id="tags4" name="user_name" placeholder="Nom Prenom">
+              <input type="text" id="tags4" name="user_name4" placeholder="Nom Prenom">
             </div>
             <fieldset>
-              <label><input type="radio" name="equipePlayer4">Equipe n°1</label>
-              <label><input type="radio" name="equipePlayer4">Equipe n°2</label>
+              <label><input type="radio" name="equipePlayer4" value=1>Equipe n°1</label>
+              <label><input type="radio" name="equipePlayer4" value=2>Equipe n°2</label>
             </fieldset>
           </div>
         </div>
         <div class="add-player-react" id="addPlayerButton"><span onClick="displayAddPlayer()">Ajouter un joueur +</span></div>
-        <label for="end-match">Fin de match</label>
-        <select name="end-match" id="">
-          <option value="">Nombre de buts</option>
-          <option value="">Temps</option>
-        </select>
-        <select name="buts" id="">
-          <option value="">1</option>
-          <option value="">2</option>
-          <option value="">4</option>
-          <option value="">5</option>
-          <option value="">6</option>
-          <option value="">7</option>
-          <option value="">8</option>
-          <option value="">9</option>
-          <option value="">10</option>
-          <option value="">11</option>
-          <option value="">12</option>
-          <option value="">13</option>
-          <option value="">14</option>
-          <option value="">15</option>
-        </select>
-        <select name="temps" id="">
-          <option value="">5</option>
-          <option value="">6</option>
-          <option value="">7</option>
-          <option value="">8</option>
-          <option value="">9</option>
-          <option value="">10</option>
-          <option value="">11</option>
-          <option value="">12</option>
-          <option value="">13</option>
-          <option value="">14</option>
-          <option value="">15</option>
-          <option value="">16</option>
-          <option value="">17</option>
-          <option value="">18</option>
-          <option value="">19</option>
-          <option value="">20</option>
-        </select>
-
         <div>
+          <label for="end-match">Fin de match</label>
+          <select name="end-match" id="butOrTime" onchange="displayTimeChoice()">
+            <option value="but">Nombre de buts</option>
+            <option value="time">Temps</option>
+          </select>
+          <select name="buts" id="chooseButs" style="display:block">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+          </select>
+          <select name="temps" id="chooseTime" style="display:none">
+            <option value="00:05:00">5</option>
+            <option value="00:06:00">6</option>
+            <option value="00:07:00">7</option>
+            <option value="00:08:00">8</option>
+            <option value="00:09:00">9</option>
+            <option value="00:10:00">10</option>
+            <option value="00:11:00">11</option>
+            <option value="00:12:00">12</option>
+            <option value="00:13:00">13</option>
+            <option value="00:14:00">14</option>
+            <option value="00:15:00">15</option>
+            <option value="00:16:00">16</option>
+            <option value="00:17:00">17</option>
+            <option value="00:18:00">18</option>
+            <option value="00:19:00">19</option>
+            <option value="00:20:00">20</option>
+          </select>
+        </div>
+        <div>
+          <label>Mode de jeu</label>
+          <select name="isRumble" id="isRumble" onchange="displayRumbleTime()">
+            <option value="0" selected>Normal</option>
+            <option value="1">Rumble</option>
+          </select>
+
+        </div>
+
+        <div id="rumbleTime" style="display:none">
           <label>Temps entre malus</label>
-          <select name="temps" id="">
+          <select name="tempsRumble">
             <option value="">15s</option>
             <option value="">20s</option>
             <option value="">25s</option>
@@ -246,6 +316,27 @@
         y.style.display = "block";
         z.style.display = "none";
 
+      }
+    }
+
+    function displayTimeChoice() {
+      var x = document.getElementById("chooseButs");
+      var y = document.getElementById("chooseTime");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+      } else {
+        x.style.display = "none";
+        y.style.display = "block";
+      }
+    }
+
+    function displayRumbleTime() {
+      var x = document.getElementById("rumbleTime");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
       }
     }
   </script>

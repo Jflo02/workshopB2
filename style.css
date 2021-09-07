@@ -299,6 +299,7 @@
   }
 /* Index.html */
 
+
 /*score.php*/
 .container3 {
     padding: 20px;
@@ -362,5 +363,15 @@ h1 {
     text-align: center;
     padding: 5px;
 }
+.Rumble-timer{
+    width: 100%;
+}
+.Rumble-timer h4{
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+
 
 /*score.php*/

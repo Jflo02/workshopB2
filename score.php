@@ -60,6 +60,10 @@
 <section class="home-section">
 
 <h1>Score</h1>
+<div class="Rumble-timer">
+<h4><!-- insérer un timer --> Mateo lache sa main droite !</h4><!-- Gage-->
+</div>
+
 <div class="container3">
     <div class="container-score">
         <h2 class="E-Rouge">1</h2> <!-- Equipe bleu ou rouge -->
@@ -69,7 +73,7 @@
 <div>   
 <div class="container4">
     <div class="container-mins">
-        <h3> 5 : 58 </h3>
+        <h3> 5 : 58 </h3> <!-- Timer ou Chrono selon mode de jeu-->
             <hr class="sm-blue-line">
             <div class="histo-qmatch">
                 <p>But pour les rouges 1-0 (5 : 20) à 30 km/h</p>

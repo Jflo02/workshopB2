@@ -55,7 +55,7 @@ include('../connexion.php');
 
 
 <section class="home-section">
-
+<h1>Home</h1>
 <div class="container">
     <a href="#"><div class="home-but">
         <h2>Match Rapide</h2>

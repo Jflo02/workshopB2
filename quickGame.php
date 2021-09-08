@@ -9,43 +9,51 @@
 </head>
 
 <body>
-  <div class="sidebar">
+<div class="sidebar">
     <div class="logo-details">
       <i class='bx bx-football icon'></i>
-      <div class="logo_name">BABY-FOOT</div>
-      <i class='bx bx-menu' id="btn"></i>
+        <div class="logo_name">BABY-FOOT</div>
+        <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list">
       <li>
-        <a href="./index.php">
+        <a href="index.php">
           <i class='bx bx-home'></i>
 
           <span class="links_name">Accueil</span>
         </a>
-        <span class="tooltip">Accueil</span>
+         <span class="tooltip">Accueil</span>
       </li>
       <li>
-        <a href="#">
-          <i class='bx bx-football'></i>
-          <span class="links_name">Match rapide</span>
-        </a>
-        <span class="tooltip">Match rapide</span>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-trophy'></i>
-          <span class="links_name">Tournois</span>
-        </a>
-        <span class="tooltip">Tournois</span>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bxs-news'></i>
-          <span class="links_name">Classement</span>
-        </a>
-        <span class="tooltip">Classement</span>
-      </li>
+       <a href="quickGame.php">
+         <i class='bx bx-football' ></i>
+         <span class="links_name">Match rapide</span>
+       </a>
+       <span class="tooltip">Match rapide</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-trophy' ></i>
+         <span class="links_name">Tournois</span>
+       </a>
+       <span class="tooltip">Tournois</span>
+     </li>
+     <li>
+       <a href="score.php">
+         <i class='bx bx-star' ></i>
+         <span class="links_name">Score</span>
+       </a>
+       <span class="tooltip">Score</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bxs-news' ></i>
+         <span class="links_name">Classement</span>
+       </a>
+       <span class="tooltip">Classement</span>
+     </li>
     </ul>
+  </div>
   </div>
 
 
@@ -62,12 +70,8 @@
   $sql = 'SELECT * FROM player ';
   $resultat = mysqli_query($conn, $sql);
   //on fait un tableau avec les noms dans la bdd
-  if (mysqli_num_rows($resultat) == 0) {
-    echo "Ajouter des noms dans la base de données";
-  } else {
     while ($row = mysqli_fetch_assoc($resultat)) {
       array_push($personnes, $row['firstName'] . " " . $row['lastName']);
-    }
   };
   if (isset($_GET['c'])) {
     switch ($_GET['c']) {
@@ -154,8 +158,8 @@
     <div class="fmatch-form  ">
       <form class="form-fm" action="./quickGame.php" method="get">
         <div class="player ">
-          <div id="from">
-            <label for="name">Ajouter le joueur n°1</label>
+          <div class="from">
+            <label for="name">Ajouter le joueur n°1 :</label>
             <input type="text" id="tags" name="user_name1" placeholder="Nom Prenom">
 
 
@@ -164,21 +168,29 @@
             <label><input type="radio" name="equipePlayer1" value=1>Equipe n°1</label>
             <label><input type="radio" name="equipePlayer1" value=2>Equipe n°2</label>
           </fieldset>
+          <fieldset>
+            <label><input type="radio" name="attdefplayer1" value=1>Attaque</label>
+            <label><input type="radio" name="attdefplayer1" value=2>Défense</label>
+          </fieldset>
         </div>
         <div class="player  ">
-          <div id="from  ">
-            <label for="name">Ajouter le joueur n°2</label>
+          <div class="from">
+            <label for="name">Ajouter le joueur n°2 :</label>
             <input type="text" id="tags2" name="user_name2" placeholder="Nom Prenom">
           </div>
           <fieldset>
             <label><input type="radio" name="equipePlayer2" value=1>Equipe n°1</label>
             <label><input type="radio" name="equipePlayer2" value=2>Equipe n°2</label>
           </fieldset>
+          <fieldset>
+            <label><input type="radio" name="attdefplayer2" value=1>Attaque</label>
+            <label><input type="radio" name="attdefplayer2" value=2>Défense</label>
+          </fieldset>
         </div>
         <div class="add-player">
           <div class="player" id="player3" style="display:none">
-            <div id="from  ">
-              <label for="name">Ajouter le joueur n°3</label>
+            <div class="from  ">
+              <label for="name">Ajouter le joueur n°3 :</label>
               <input type="text" id="tags3" name="user_name3" placeholder="Nom Prenom">
 
 
@@ -187,26 +199,34 @@
               <label><input type="radio" name="equipePlayer3" value=1>Equipe n°1</label>
               <label><input type="radio" name="equipePlayer3" value=2>Equipe n°2</label>
             </fieldset>
+            <fieldset>
+            <label><input type="radio" name="attdefplayer3" value=1>Attaque</label>
+            <label><input type="radio" name="attdefplayer3" value=2>Défense</label>
+          </fieldset>
           </div>
           <div class="player" id="player4" style="display:none">
-            <div id="from  ">
-              <label for="name">Ajouter le joueur n°4</label>
+            <div class="from">
+              <label for="name">Ajouter le joueur n°4 :</label>
               <input type="text" id="tags4" name="user_name4" placeholder="Nom Prenom">
             </div>
             <fieldset>
               <label><input type="radio" name="equipePlayer4" value=1>Equipe n°1</label>
               <label><input type="radio" name="equipePlayer4" value=2>Equipe n°2</label>
             </fieldset>
+            <fieldset>
+            <label><input type="radio" name="attdefplayer4" value=1>Attaque</label>
+            <label><input type="radio" name="attdefplayer4" value=2>Défense</label>
+          </fieldset>
           </div>
         </div>
         <div class="add-player-react" id="addPlayerButton"><span onClick="displayAddPlayer()">Ajouter un joueur +</span></div>
-        <div>
+        <div class="div-end-match">
           <label for="end-match">Fin de match</label>
           <select name="end-match" id="butOrTime" onchange="displayTimeChoice()">
             <option value="but">Nombre de buts</option>
             <option value="time">Temps</option>
           </select>
-          <select name="buts" id="chooseButs" style="display:block">
+          <select class="sm-select" name="buts" id="chooseButs" style="display:block">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -223,7 +243,7 @@
             <option value="14">14</option>
             <option value="15">15</option>
           </select>
-          <select name="temps" id="chooseTime" style="display:none">
+          <select class="sm-select" name="temps" id="chooseTime" style="display:none">
             <option value="00:05:00">5</option>
             <option value="00:06:00">6</option>
             <option value="00:07:00">7</option>
@@ -242,7 +262,7 @@
             <option value="00:20:00">20</option>
           </select>
         </div>
-        <div>
+        <div class="div-end-match">
           <label>Mode de jeu</label>
           <select name="isRumble" id="isRumble" onchange="displayRumbleTime()">
             <option value="0" selected>Normal</option>
@@ -253,7 +273,7 @@
 
         <div id="rumbleTime" style="display:none">
           <label>Temps entre malus</label>
-          <select name="tempsRumble">
+          <select class="sm-select2" name="tempsRumble">
             <option value="">15s</option>
             <option value="">20s</option>
             <option value="">25s</option>
@@ -268,7 +288,7 @@
 
         </div>
         <input type="hidden" name="c" value="create">
-        <div><input type="submit" value="Lancer la partie"></div>
+        <div><input class="btn-match" type="submit" value="Lancer la partie"></div>
 
 
       </form>

@@ -16,16 +16,11 @@ while ($row = mysqli_fetch_assoc($resultat)) {
 $sql = 'SELECT * FROM QuickGame where idQuickGame =' . $_GET['idQuickGame'] . '';
 $resultat = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($resultat)) {
-  print_r($row);
   $game = $row;
 }
 
 //si oui on met un décompte de temps
-if ($game['DurationMaxUntilEnd'] == NULL) {
-  echo 'On ne dmd pas de temps';
-} else {
-  echo 'on demande un tps de ' . $game['DurationMaxUntilEnd'];
-}
+
 //si non on met un timer tout simple
 
 ?>
@@ -104,8 +99,8 @@ if ($game['DurationMaxUntilEnd'] == NULL) {
           <div class="container-mins">
             <h3 id="countDown"></h3> <!-- Timer ou Chrono selon mode de jeu-->
             <hr class="sm-blue-line">
-            <div class="histo-qmatch">
-              <p>But pour les rouges 1-0 (5 : 20) à 30 km/h</p>
+            <div class="histo-qmatch" id="histo-qmatch">
+
             </div>
           </div>
 
@@ -120,14 +115,15 @@ if ($game['DurationMaxUntilEnd'] == NULL) {
   </section>
 
   <script>
+    var min = 00;
+    var sec = 00;
     <?php if ($game['DurationMaxUntilEnd'] == NULL) { ?>
 
 
       window.onload = function() {
         var myTime = <?php echo '"' . $game['DurationMaxUntilEnd'] . '"' ?>;
         var countDownFinish = false;
-        var min = 00;
-        var sec = 00;
+
         setInterval(function() {
           var a = new Date();
           if (!countDownFinish) {
@@ -152,8 +148,8 @@ if ($game['DurationMaxUntilEnd'] == NULL) {
       window.onload = function() {
         var myTime = <?php echo '"' . $game['DurationMaxUntilEnd'] . '"' ?>;
         var countDownFinish = false;
-        var min = myTime.split(":")[1];
-        var sec = myTime.split(":")[2];
+        min = myTime.split(":")[1];
+        sec = myTime.split(":")[2];
         setInterval(function() {
           var a = new Date();
           if (!countDownFinish) {
@@ -208,18 +204,21 @@ if ($game['DurationMaxUntilEnd'] == NULL) {
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
+    //on regarde en bdd quand le score de la team 1 (rouge) augmente
     $(function() {
       var url_string = window.location.href;
       var url = new URL(url_string);
 
       function loadNum() {
         $('#E-Rouge').load('./scoresFromDatabaseTeam1.php?idQuickGame=' + url.searchParams.get("idQuickGame"));
+       
         setTimeout(loadNum, 2000); // makes it reload every 5 sec
       }
       loadNum(); // start the process...
     });
   </script>
   <script>
+    //on regarde en bdd quand le score de la team 2 (bleue) augmente
     $(function() {
       var url_string = window.location.href;
       var url = new URL(url_string);

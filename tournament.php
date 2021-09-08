@@ -136,6 +136,14 @@
         </div>
 
         <div class="div-end-match">
+          <label>Teams</label>
+          <select name="" id="" onchange="">
+            <option value="" selected>Normal</option>
+            <option value="">Aléatoire</option>
+          </select>
+        </div>
+
+        <div class="div-end-match">
           <label>Solo ou Duo</label>
           <select name="" id="" onchange="">
             <option value="" selected>SOLO</option>
@@ -143,34 +151,16 @@
           </select>
         </div>
 
-        <div class="Team">
-        <div class="player ">
-          <div class="from">
-            <h3>TEAM 1</h3>
-            <label for="name">Ajouter le joueur n°1 :</label>
-            <input type="text" id="tags" name="user_name1" placeholder="Nom Prenom">
-          </div>
-          <fieldset>
-            <label><input type="radio" name="attdefplayer1" value=1>Attaque</label>
-            <label><input type="radio" name="attdefplayer1" value=2>Défense</label>
-          </fieldset>
-        </div>
-        <div class="player ">
-          <div class="from">
-            <label for="name">Ajouter le joueur n°2 :</label>
-            <input type="text" id="tags" name="user_name2" placeholder="Nom Prenom">
-          </div>
-          <fieldset>
-            <label><input type="radio" name="attdefplayer2" value=1>Attaque</label>
-            <label><input type="radio" name="attdefplayer2" value=2>Défense</label>
-          </fieldset>
-        </div>
-        </div>
+
 
         <div class="Team">
         <div class="player ">
           <div class="from">
             <h3>TEAM 1</h3>
+          <div class="from">
+            <label for="name">Nom de Team</label>
+            <input type="text" id="tags" name="name_team1" placeholder="Nom de Team">
+          </div>
             <label for="name">Ajouter le joueur n°1 :</label>
             <input type="text" id="tags" name="user_name1" placeholder="Nom Prenom">
           </div>
@@ -195,6 +185,12 @@
         <div class="player ">
           <div class="from">
             <h3>TEAM 2</h3>
+            
+            <div class="from">
+            <label for="name">Nom de Team</label>
+            <input type="text" id="tags" name="name_team2" placeholder="Nom de Team">
+            </div>
+
             <label for="name">Ajouter le joueur n°1 :</label>
             <input type="text" id="tags" name="user_name3" placeholder="Nom Prenom">
           </div>
@@ -219,6 +215,10 @@
         <div class="player ">
           <div class="from">
             <h3>TEAM 3</h3>
+            <div class="from">
+            <label for="name">Nom de Team</label>
+            <input type="text" id="tags" name="name_team3" placeholder="Nom de Team">
+          </div>
             <label for="name">Ajouter le joueur n°1 :</label>
             <input type="text" id="tags" name="user_name5" placeholder="Nom Prenom">
           </div>
@@ -243,6 +243,11 @@
         <div class="player ">
           <div class="from">
             <h3>TEAM 4</h3>
+            <div class="from">
+            <label for="name">Nom de Team</label>
+            <input type="text" id="tags" name="name_team4" placeholder="Nom de Team">
+          </div>
+
             <label for="name">Ajouter le joueur n°1 :</label>
             <input type="text" id="tags" name="user_name7" placeholder="Nom Prenom">
           </div>
@@ -267,6 +272,10 @@
         <div class="player ">
           <div class="from">
             <h3>TEAM 5</h3>
+            <div class="from">
+            <label for="name">Nom de Team</label>
+            <input type="text" id="tags" name="name_team5" placeholder="Nom de Team">
+          </div>
             <label for="name">Ajouter le joueur n°1 :</label>
             <input type="text" id="tags" name="user_name9" placeholder="Nom Prenom">
           </div>
@@ -291,6 +300,10 @@
         <div class="player ">
           <div class="from">
             <h3>TEAM 6</h3>
+            <div class="from">
+            <label for="name">Nom de Team</label>
+            <input type="text" id="tags" name="name_team6" placeholder="Nom de Team">
+          </div>
             <label for="name">Ajouter le joueur n°1 :</label>
             <input type="text" id="tags" name="user_name11" placeholder="Nom Prenom">
           </div>

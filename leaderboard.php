@@ -9,11 +9,11 @@
 </head>
 
 <body>
-<div class="sidebar">
+  <div class="sidebar">
     <div class="logo-details">
       <i class='bx bx-football icon'></i>
-        <div class="logo_name">BABY-FOOT</div>
-        <i class='bx bx-menu' id="btn" ></i>
+      <div class="logo_name">BABY-FOOT</div>
+      <i class='bx bx-menu' id="btn"></i>
     </div>
     <ul class="nav-list">
       <li>
@@ -22,36 +22,36 @@
 
           <span class="links_name">Accueil</span>
         </a>
-         <span class="tooltip">Accueil</span>
+        <span class="tooltip">Accueil</span>
       </li>
       <li>
-       <a href="quickGame.php">
-         <i class='bx bx-football' ></i>
-         <span class="links_name">Match rapide</span>
-       </a>
-       <span class="tooltip">Match rapide</span>
-     </li>
-     <li>
-       <a href="tournament.php">
-         <i class='bx bx-trophy' ></i>
-         <span class="links_name">Tournois</span>
-       </a>
-       <span class="tooltip">Tournois</span>
-     </li>
-     <li>
-       <a href="score.php">
-         <i class='bx bx-star' ></i>
-         <span class="links_name">Score</span>
-       </a>
-       <span class="tooltip">Score</span>
-     </li>
-     <li>
-       <a href="leaderboard.php">
-         <i class='bx bxs-news' ></i>
-         <span class="links_name">Classement</span>
-       </a>
-       <span class="tooltip">Classement</span>
-     </li>
+        <a href="quickGame.php">
+          <i class='bx bx-football'></i>
+          <span class="links_name">Match rapide</span>
+        </a>
+        <span class="tooltip">Match rapide</span>
+      </li>
+      <li>
+        <a href="tournament.php">
+          <i class='bx bx-trophy'></i>
+          <span class="links_name">Tournois</span>
+        </a>
+        <span class="tooltip">Tournois</span>
+      </li>
+      <li>
+        <a href="score.php">
+          <i class='bx bx-star'></i>
+          <span class="links_name">Score</span>
+        </a>
+        <span class="tooltip">Score</span>
+      </li>
+      <li>
+        <a href="leaderboard.php">
+          <i class='bx bxs-news'></i>
+          <span class="links_name">Classement</span>
+        </a>
+        <span class="tooltip">Classement</span>
+      </li>
     </ul>
   </div>
   </div>
@@ -65,97 +65,62 @@
   include('../connexion.php');
   ?>
 
-<section class="home-section">
+  <section class="home-section">
     <h1>Classement</h1>
     <div class="container_classement">
-    <table class="classement">
-    <thead>
-        <tr>
-            <th colspan="2">Classement</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="classement_sep title_table classement_td">Lille</td>
-            <td class="classement_sep2 title_table classement_td">Intercampus</td>
-        </tr>
-        <tr> <!--Ligne-->
-            <td class="classement_sep">
-              <table class="classement2">
-                <tr>
-                  <td class="classement_td">Nom Prenom</td> <!--Lille-->
-                  <td class="classement_td">Score</td>
-                </tr>
-            </table>
-            </td>
-            <td class="classement_sep2">
-              <table class="classement2">
-                <tr>
-                  <td class="classement_td">Nom Prenom</td> <!--Intercampus-->
-                  <td class="classement_td">Score</td>
-                </tr>
-              </table>
-            </td>
-        </tr> <!--Ligne-->
-        <tr> <!--Ligne-->
-            <td class="classement_sep">
-              <table class="classement2">
-                <tr>
-                  <td class="classement_td">Nom Prenom</td> <!--Lille-->
-                  <td class="classement_td">Score</td>
-                </tr>
-            </table>
-            </td>
-            <td class="classement_sep2">
-              <table class="classement2">
-                <tr>
-                  <td class="classement_td">Nom Prenom</td> <!--Intercampus-->
-                  <td class="classement_td">Score</td>
-                </tr>
-              </table>
-            </td>
-        </tr> <!--Ligne-->
-        <tr> <!--Ligne-->
-            <td class="classement_sep">
-              <table class="classement2">
-                <tr>
-                  <td class="classement_td">Nom Prenom</td> <!--Lille-->
-                  <td class="classement_td">Score</td>
-                </tr>
-            </table>
-            </td>
-            <td class="classement_sep2">
-              <table class="classement2">
-                <tr>
-                  <td class="classement_td">Nom Prenom</td> <!--Intercampus-->
-                  <td class="classement_td">Score</td>
-                </tr>
-              </table>
-            </td>
-        </tr> <!--Ligne-->
-        <tr> <!--Ligne-->
-            <td class="classement_sep">
-              <table class="classement2">
-                <tr>
-                  <td class="classement_td">Nom Prenom</td> <!--Lille-->
-                  <td class="classement_td">Score</td>
-                </tr>
-            </table>
-            </td>
-            <td class="classement_sep2">
-              <table class="classement2">
-                <tr>
-                  <td class="classement_td">Nom Prenom</td> <!--Intercampus-->
-                  <td class="classement_td">Score</td>
-                </tr>
-              </table>
-            </td>
-        </tr> <!--Ligne-->
+      <table class="classement">
+        <thead>
+          <tr>
+            <th colspan="2">Classement Lille</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          // select * from player
+          $sql = 'SELECT * FROM Player where campus =1 ORDER BY  Player.totalScore DESC Limit 10';
+          $resultatLocal = mysqli_query($conn, $sql);
 
-    </tbody>
-</table>
-</div>
-</section>
+          $i = 0;
+          while ($rowLocal = mysqli_fetch_assoc($resultatLocal)) {
+          ?>
+            <tr>
+              <td class="classement_sep title_table classement_td"><?php echo $rowLocal['firstName'] .  ' ' . $rowLocal['lastName'] ?></td>
+              <td class="classement_sep2 title_table classement_td"><?php echo $rowLocal['totalScore'] ?></td>
+            </tr>
+          <?php
+          }
+          ?>
+
+        </tbody>
+      </table>
+      <table class="classement">
+        <thead>
+          <tr>
+            <th colspan="2">Classement Intercampus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          // select * from player
+          $sql = 'SELECT * FROM Player ORDER BY  Player.totalScore DESC Limit 10';
+          $resultatLocal = mysqli_query($conn, $sql);
+
+          $i = 0;
+          while ($rowLocal = mysqli_fetch_assoc($resultatLocal)) {
+          ?>
+            <tr>
+              <td class="classement_sep title_table classement_td"><?php echo $rowLocal['firstName'] .  ' ' . $rowLocal['lastName'] ?></td>
+              <td class="classement_sep2 title_table classement_td"><?php echo $rowLocal['totalScore'] ?></td>
+            </tr>
+          <?php
+          }
+          ?>
+
+        </tbody>
+      </table>
+
+    </div>
+  </section>
   <script>
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");

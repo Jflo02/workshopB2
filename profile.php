@@ -39,13 +39,6 @@
        <span class="tooltip">Tournois</span>
      </li>
      <li>
-       <a href="score.php">
-         <i class='bx bx-star' ></i>
-         <span class="links_name">Score</span>
-       </a>
-       <span class="tooltip">Score</span>
-     </li>
-     <li>
        <a href="leaderboard.php">
          <i class='bx bxs-news' ></i>
          <span class="links_name">Classement</span>

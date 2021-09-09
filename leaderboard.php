@@ -38,13 +38,7 @@
         </a>
         <span class="tooltip">Tournois</span>
       </li>
-      <li>
-        <a href="score.php">
-          <i class='bx bx-star'></i>
-          <span class="links_name">Score</span>
-        </a>
-        <span class="tooltip">Score</span>
-      </li>
+      
       <li>
         <a href="leaderboard.php">
           <i class='bx bxs-news'></i>
@@ -84,7 +78,7 @@
           while ($rowLocal = mysqli_fetch_assoc($resultatLocal)) {
           ?>
             <tr>
-              <td class="classement_sep title_table classement_td"><?php echo $rowLocal['firstName'] .  ' ' . $rowLocal['lastName'] ?></td>
+              <td class="classement_sep title_table classement_td"><a href=<?php echo "./profile.php?idPlayer=" . $rowLocal['idPlayer']  ?>><?php echo $rowLocal['firstName'] .  ' ' . $rowLocal['lastName'] ?></a></td>
               <td class="classement_sep2 title_table classement_td"><?php echo $rowLocal['totalScore'] ?></td>
             </tr>
           <?php
@@ -109,7 +103,7 @@
           while ($rowLocal = mysqli_fetch_assoc($resultatLocal)) {
           ?>
             <tr>
-              <td class="classement_sep title_table classement_td"><?php echo $rowLocal['firstName'] .  ' ' . $rowLocal['lastName'] ?></td>
+              <td class="classement_sep title_table classement_td"><a href=<?php echo "./profile.php?idPlayer=" . $rowLocal['idPlayer']  ?>><?php echo $rowLocal['firstName'] .  ' ' . $rowLocal['lastName'] ?></a></td>
               <td class="classement_sep2 title_table classement_td"><?php echo $rowLocal['totalScore'] ?></td>
             </tr>
           <?php

@@ -44,7 +44,7 @@ include('../connexion.php');
                 <span class="tooltip">Tournois</span>
             </li>
             <li>
-                <a href="#">
+                <a href="./leaderboard.php">
                     <i class='bx bxs-news'></i>
                     <span class="links_name">Classement</span>
                 </a>

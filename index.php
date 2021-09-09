@@ -65,14 +65,14 @@ include('../connexion.php');
                 <div class="home-but">
                     <h2>Match Rapide</h2>
                     <img src="https://resize.programme-television.ladmedia.fr/r/670,670/img/var/premiere/storage/images/tele-7-jours/news-tv/clermont-foot-auxerre-ligue-2-sur-quelle-chaine-et-a-quelle-heure-match-du-samedi-23-janvier-2021-4668366/99371060-1-fre-FR/Clermont-Foot-Auxerre-Ligue-2-sur-quelle-chaine-et-a-quelle-heure-match-du-samedi-23-janvier-2021.jpg" alt="#">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ipsum nostrum iste magni eveniet, sequi accusantium veritatis ducimus impedit vitae voluptates! Quia eum sit exercitationem voluptatibus aliquid, perferendis provident ipsa?</p>
+                    <p>Lancez un match rapide limité par le temps ou le nombre de but ! La victoire ou la défaite affecte votre classement général</p>
                 </div>
             </a>
             <a href="#">
                 <div class="home-but">
                     <h2>Tournois</h2>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMwRsjvSbIbhgZPqSs12LbLxQIx76E3nkf5Q&usqp=CAU" alt="#">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ipsum nostrum iste magni eveniet, sequi accusantium veritatis ducimus impedit vitae voluptates! Quia eum sit exercitationem voluptatibus aliquid, perferendis provident ipsa?</p>
+                    <p>Nous créons pour vous le tournoi, entrez simplement le nombre d'équipe et leur composition. Le classement final affecte grandement votre classement général</p>
                 </div>
             </a>
         </div>
@@ -84,7 +84,7 @@ include('../connexion.php');
                 <div class="home-stream">
                     <h2>Streaming</h2>
                     <img src="https://dkofva0t6jnyn.cloudfront.net/sites/default/files/styles/amp_blog_image_large/public/consumer/blog/csm-blog/twitch-logo-1138x658.jpg" alt="#">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ipsum nostrum iste magni eveniet, sequi accusantium veritatis ducimus impedit vitae voluptates! Quia eum sit exercitationem voluptatibus aliquid, perferendis provident ipsa?</p>
+                    <p>Regardez le match en cours et soutenez vos camarades lors d'affrontements enflammés</p>
                 </div>
             </a>
         </div>

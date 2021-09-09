@@ -9,7 +9,7 @@ print(sys.argv[1])
 connection = pymysql.connect(host='127.0.0.1',
                              user='root',
                              password='',                             
-                             db='workshop',
+                             db='workshopb2',
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
 
@@ -25,7 +25,7 @@ with connection.cursor() as cursor:
 
     x= int(tabx[0])
     taby = pos[1].split(".")
-    y= int(taby[0])
+    y= int(taby[0]) 
     tabxy = [x,y]
 
     tab.append(tabxy)

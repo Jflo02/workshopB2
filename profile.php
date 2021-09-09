@@ -87,7 +87,7 @@
       <div class="profile_flex_center">
         <?php
 
-        $command = escapeshellcmd('python ./playerstat.py' . $_GET['idPlayer'] . '');
+        $command = escapeshellcmd('python ./playerstat.py ' . $_GET['idPlayer'] . '');
         $output = shell_exec($command);
 
         ?>

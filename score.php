@@ -211,7 +211,7 @@ while ($row = mysqli_fetch_assoc($resultat)) {
 
       function loadNum() {
         $('#E-Rouge').load('./scoresFromDatabaseTeam1.php?idQuickGame=' + url.searchParams.get("idQuickGame"));
-       
+
         setTimeout(loadNum, 2000); // makes it reload every 5 sec
       }
       loadNum(); // start the process...

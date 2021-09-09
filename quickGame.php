@@ -9,11 +9,11 @@
 </head>
 
 <body>
-<div class="sidebar">
+  <div class="sidebar">
     <div class="logo-details">
       <i class='bx bx-football icon'></i>
-        <div class="logo_name">BABY-FOOT</div>
-        <i class='bx bx-menu' id="btn" ></i>
+      <div class="logo_name">BABY-FOOT</div>
+      <i class='bx bx-menu' id="btn"></i>
     </div>
     <ul class="nav-list">
       <li>
@@ -22,36 +22,36 @@
 
           <span class="links_name">Accueil</span>
         </a>
-         <span class="tooltip">Accueil</span>
+        <span class="tooltip">Accueil</span>
       </li>
       <li>
-       <a href="quickGame.php">
-         <i class='bx bx-football' ></i>
-         <span class="links_name">Match rapide</span>
-       </a>
-       <span class="tooltip">Match rapide</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-trophy' ></i>
-         <span class="links_name">Tournois</span>
-       </a>
-       <span class="tooltip">Tournois</span>
-     </li>
-     <li>
-       <a href="score.php">
-         <i class='bx bx-star' ></i>
-         <span class="links_name">Score</span>
-       </a>
-       <span class="tooltip">Score</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bxs-news' ></i>
-         <span class="links_name">Classement</span>
-       </a>
-       <span class="tooltip">Classement</span>
-     </li>
+        <a href="quickGame.php">
+          <i class='bx bx-football'></i>
+          <span class="links_name">Match rapide</span>
+        </a>
+        <span class="tooltip">Match rapide</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-trophy'></i>
+          <span class="links_name">Tournois</span>
+        </a>
+        <span class="tooltip">Tournois</span>
+      </li>
+      <li>
+        <a href="score.php">
+          <i class='bx bx-star'></i>
+          <span class="links_name">Score</span>
+        </a>
+        <span class="tooltip">Score</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bxs-news'></i>
+          <span class="links_name">Classement</span>
+        </a>
+        <span class="tooltip">Classement</span>
+      </li>
     </ul>
   </div>
   </div>
@@ -66,12 +66,13 @@
   ?>
 
   <?php
+  $newIdQuickGame = 0;
   $personnes = array();
   $sql = 'SELECT * FROM player ';
   $resultat = mysqli_query($conn, $sql);
   //on fait un tableau avec les noms dans la bdd
-    while ($row = mysqli_fetch_assoc($resultat)) {
-      array_push($personnes, $row['firstName'] . " " . $row['lastName']);
+  while ($row = mysqli_fetch_assoc($resultat)) {
+    array_push($personnes, $row['firstName'] . " " . $row['lastName']);
   };
   if (isset($_GET['c'])) {
     switch ($_GET['c']) {
@@ -92,6 +93,8 @@
           $sql = 'INSERT INTO quickgame (idQuickGame, NumberOfGoalsNeeded, isRumble) VALUES (' . $newIdQuickGame . ', ' . $NumberOfGoalsNeeded .  ', ' . $_GET['isRumble'] . ')';
           $resultat = mysqli_query($conn, $sql);
         }
+        $sql = 'INSERT INTO quickgameStats (idQuickGame) VALUES (' . $newIdQuickGame . ')';
+        $resultat = mysqli_query($conn, $sql);
 
         // $sql = 'INSERT INTO quickgame (idQuickGame, DurationMaxUntilEnd, NumberOfGoalsNeeded, isRumble) VALUES (' . $newIdQuickGame . ', ' . $DurationMaxUntilEnd . ', ' . $NumberOfGoalsNeeded . ', 0)';
         // print_r($sql);
@@ -200,9 +203,9 @@
               <label><input type="radio" name="equipePlayer3" value=2>Equipe n°2</label>
             </fieldset>
             <fieldset>
-            <label><input type="radio" name="attdefplayer3" value=1>Attaque</label>
-            <label><input type="radio" name="attdefplayer3" value=2>Défense</label>
-          </fieldset>
+              <label><input type="radio" name="attdefplayer3" value=1>Attaque</label>
+              <label><input type="radio" name="attdefplayer3" value=2>Défense</label>
+            </fieldset>
           </div>
           <div class="player" id="player4" style="display:none">
             <div class="from">
@@ -214,9 +217,9 @@
               <label><input type="radio" name="equipePlayer4" value=2>Equipe n°2</label>
             </fieldset>
             <fieldset>
-            <label><input type="radio" name="attdefplayer4" value=1>Attaque</label>
-            <label><input type="radio" name="attdefplayer4" value=2>Défense</label>
-          </fieldset>
+              <label><input type="radio" name="attdefplayer4" value=1>Attaque</label>
+              <label><input type="radio" name="attdefplayer4" value=2>Défense</label>
+            </fieldset>
           </div>
         </div>
         <div class="add-player-react" id="addPlayerButton"><span onClick="displayAddPlayer()">Ajouter un joueur +</span></div>
@@ -288,7 +291,9 @@
 
         </div>
         <input type="hidden" name="c" value="create">
-        <div><input class="btn-match" type="submit" value="Lancer la partie"></div>
+        <!-- <div><button class="btn-match" type="submit">Lancer la partie</button></div> -->
+
+        <div><button class="btn-match" type="submit"> <a href="./score.php?idQuickGame=<?php echo json_encode($newIdQuickGame) ?>">Lancer la partie</a></button></div>
 
 
       </form>

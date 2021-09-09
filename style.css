@@ -545,3 +545,41 @@ border-right: 3px solid #dbe5ff;
 
 }
 /*LeaderBoard*/
+/*Profile*/
+.profile_container {
+  background-color:#336aff ;
+  margin: 20px;
+  border-radius: 20px;
+  padding: 50px 20px;
+  color:#dbe5FF;
+}
+
+.profile_flex_center {
+  display: flex;
+  justify-content: center;
+}
+
+.profile_container h3{
+  font-size: 30px;
+}
+.profile_flex_center img{
+  width:600px;
+  height: 400px;
+}
+.vit_but {
+  border: 3px solid #dbe5FF;
+  border-radius: 10px;
+  padding: 5px;
+}
+.stats_tir_h3{
+  width: 100%;
+  text-align: center;
+}
+.profile_flex_center h3{
+  margin: 30px 10px;
+  align-self: center;
+}
+.profile_container h2{
+  font-size: 34px;
+}
+/*Profile*/

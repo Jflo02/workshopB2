@@ -19,16 +19,18 @@ tab = []
 with connection.cursor() as cursor:
     sql ="SELECT position FROM `but` WHERE markedBy="+sys.argv[1]
     cursor.execute(sql)
-    pos = cursor.fetchone()
-    pos = pos['position'].split(", ")
-    tabx = pos[0].split(".")
+    row = cursor.fetchall()
+    for ligne in row :
+        pos = ligne['position'].split(", ")
+        tabx = pos[0].split(".")
 
-    x= int(tabx[0])
-    taby = pos[1].split(".")
-    y= int(taby[0]) 
-    tabxy = [x,y]
+        x= int(tabx[0])
+        taby = pos[1].split(".")
+        y= int(taby[0]) 
+        tabxy = [x,y]
 
-    tab.append(tabxy)
+        tab.append(tabxy)
+
 
 img = Image.open("./image/ballebaby.png")
 

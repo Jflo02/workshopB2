@@ -9,11 +9,11 @@
 </head>
 
 <body>
-<div class="sidebar">
+  <div class="sidebar">
     <div class="logo-details">
       <i class='bx bx-football icon'></i>
-        <div class="logo_name">BABY-FOOT</div>
-        <i class='bx bx-menu' id="btn" ></i>
+      <div class="logo_name">BABY-FOOT</div>
+      <i class='bx bx-menu' id="btn"></i>
     </div>
     <ul class="nav-list">
       <li>
@@ -22,36 +22,36 @@
 
           <span class="links_name">Accueil</span>
         </a>
-         <span class="tooltip">Accueil</span>
+        <span class="tooltip">Accueil</span>
       </li>
       <li>
-       <a href="quickGame.php">
-         <i class='bx bx-football' ></i>
-         <span class="links_name">Match rapide</span>
-       </a>
-       <span class="tooltip">Match rapide</span>
-     </li>
-     <li>
-       <a href="tournament.php">
-         <i class='bx bx-trophy' ></i>
-         <span class="links_name">Tournois</span>
-       </a>
-       <span class="tooltip">Tournois</span>
-     </li>
-     <li>
-       <a href="leaderboard.php">
-         <i class='bx bxs-news' ></i>
-         <span class="links_name">Classement</span>
-       </a>
-       <span class="tooltip">Classement</span>
-     </li>
-     <li>
-       <a href="profile.php">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">Profile</span>
-       </a>
-       <span class="tooltip">Profile</span>
-     </li>
+        <a href="quickGame.php">
+          <i class='bx bx-football'></i>
+          <span class="links_name">Match rapide</span>
+        </a>
+        <span class="tooltip">Match rapide</span>
+      </li>
+      <li>
+        <a href="tournament.php">
+          <i class='bx bx-trophy'></i>
+          <span class="links_name">Tournois</span>
+        </a>
+        <span class="tooltip">Tournois</span>
+      </li>
+      <li>
+        <a href="leaderboard.php">
+          <i class='bx bxs-news'></i>
+          <span class="links_name">Classement</span>
+        </a>
+        <span class="tooltip">Classement</span>
+      </li>
+      <li>
+        <a href="profile.php">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Profile</span>
+        </a>
+        <span class="tooltip">Profile</span>
+      </li>
 
     </ul>
   </div>
@@ -66,26 +66,49 @@
   include('../connexion.php');
   ?>
 
-<section class="home-section">
+  <section class="home-section">
 
     <h1>Profile</h1>
 
     <div class="profile_container">
+      <?php
+      $sql = "SELECT firstName, lastName FROM player where idPlayer='" . $_GET['idPlayer'] . "'";
+      $resultat = mysqli_query($conn, $sql);
+      if ($resultat == FALSE) {
+        die("<br>Echec d'execution de la requete : " . $sql);
+      } elseif (mysqli_num_rows($resultat) == 1) {
+        $row = mysqli_fetch_assoc($resultat);
+      }
+      ?>
+      <h2><?php echo $row['firstName'] . " " . $row['lastName'] ?></h2>
 
-    <h2>Nom Prénom</h2>
+      <h3 class="stats_tir_h3">Stats de tir</h3>
 
-    <h3 class="stats_tir_h3">Stats de tir</h3>
+      <div class="profile_flex_center">
+        <?php
 
-    <div class="profile_flex_center">
-    <img src="https://dummyimage.com/600x400/000/fff" alt="#">
-    </div>
+        $command = escapeshellcmd('python ./playerstat.py' . $_GET['idPlayer'] . '');
+        $output = shell_exec($command);
 
-    <div class="profile_flex_center margin_but">
+        ?>
+
+        <img src=<?php echo './image/ballebaby' . $_GET['idPlayer'] . '.png'?> alt="#">
+      </div>
+      <?php
+      $sql = "SELECT round(AVG(vitesse),3) as moyvitesse FROM `but` WHERE markedBy='" . $_GET['idPlayer'] . "'";
+      $resultat = mysqli_query($conn, $sql);
+      if ($resultat == FALSE) {
+        die("<br>Echec d'execution de la requete : " . $sql);
+      } elseif (mysqli_num_rows($resultat) == 1) {
+        $row = mysqli_fetch_assoc($resultat);
+      }
+      ?>
+      <div class="profile_flex_center margin_but">
         <h3>Vitesse moyenne de but :</h3>
-        <h3 class="vit_but"> 1,5 m/s</h3>
+        <h3 class="vit_but"> <?php echo $row['moyvitesse'].' m/s' ?></h3>
+      </div>
     </div>
-    </div>
-</section>
+  </section>
   <script>
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");

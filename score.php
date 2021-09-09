@@ -83,7 +83,7 @@ while ($row = mysqli_fetch_assoc($resultat)) {
     <h1>Score</h1>
     <div class="Rumble-timer">
       <h4>
-        <!-- insérer un timer --> Mateo lache sa main droite !
+        <!-- insérer un timer --> Florimond vs Matéo !
       </h4><!-- Gage-->
     </div>
 

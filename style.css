@@ -497,3 +497,51 @@ text-align: center;
   }
 }
 /*Quickmatch*/
+/*LeaderBoard*/
+
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+.container_classement {
+  display: flex;
+  justify-content: center;
+  background-color:#336aff ;
+  margin: 20px;
+  border-radius: 20px;
+  padding: 50px 20px;
+}
+
+.classement {
+  border :3px solid #dbe5ff ;
+  border-radius: 20px;
+  width: 100%;
+}
+.classement2 {
+  width: 100%;
+}
+.classement thead tr th {
+  background-color:#5E8AFF ;
+  border-radius: 20px;
+}
+.classement_td{
+width: 50%;
+text-align: center;
+color: #dbe5ff;
+}
+.classement_sep{
+border-right: 3px solid #dbe5ff;
+}
+.classement_sep2{
+  border-left: 3px solid #dbe5ff;
+  }
+  
+
+.title_table{
+  border-bottom: 3px solid #dbe5ff;
+
+}
+/*LeaderBoard*/

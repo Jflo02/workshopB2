@@ -11,9 +11,6 @@ $resultat = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($resultat)) {
 
     $teamButs = $row['butTeam1'];
-    echo $teamButs;
-    echo '<br>';
-    echo $_GET['scoreDisplayed'];
     if ($teamButs != $_GET['scoreDisplayed']) {
         //on cherche l'id du player attaquant
         $chrono = $_GET['chrono'];
@@ -21,9 +18,15 @@ while ($row = mysqli_fetch_assoc($resultat)) {
         $resultat = mysqli_query($conn, $sql);
         $row2 = mysqli_fetch_assoc($resultat);
         $idButeur = $row2['idPlayer'];
-        $sql = 'INSERT INTO but (markedBy, timeMarked, idQuickGame) VALUES (' . $idButeur . ',"' . $chrono . ':00", ' . $_GET['idQuickGame'] . ')';
+        //select le max ID des buts python + vitesse + position et envoyer la grosse requete
+        $sql = 'SELECT * FROM but_from_python where idQuickGame =' . $_GET['idQuickGame'] . ' and isAttack=' . 1 . ' and teamNumber=' . 1 . '';
         $resultat = mysqli_query($conn, $sql);
-        echo $_GET['scoreDisplayed'];
+        $sql = 'SELECT * FROM but_from_python WHERE id=(SELECT max(id) from but_from_python)';
+        $resultat = mysqli_query($conn, $sql);
+        $butFromPython = mysqli_fetch_assoc($resultat);
+        $sql = 'INSERT INTO but (idBut, markedBy, timeMarked, idQuickGame, vitesse, position) VALUES ('  . $butFromPython['id'] . ',' . $idButeur . ',"' . $chrono . '", ' . $_GET['idQuickGame'] . ',' . $butFromPython['vitesse'] . ',"' . $butFromPython['position'] . '")';
+        print_r($sql);
+        $resultat = mysqli_query($conn, $sql);
 
 
 
@@ -38,10 +41,6 @@ while ($row = mysqli_fetch_assoc($resultat)) {
     }
 }
 
-if (isset($row3['firstName'])) {
-
-    echo ('But pour les rouges (' . $row3['firstName'] . ') ' . $chrono . ' à 30 km/h');
-};
 
 // echo ($teamButs1);
 // echo BUT pour l'équipe Rouge (Florimond), à 30 km/h (4:46)

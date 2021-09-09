@@ -211,7 +211,7 @@ while ($row = mysqli_fetch_assoc($resultat)) {
 
       function loadNum() {
         $('#E-Rouge').load('./scoresFromDatabaseTeam1.php?idQuickGame=' + url.searchParams.get("idQuickGame"));
-
+        $('#histo-qmatch').load('./scriptAddButTeam1.php?idQuickGame=' + url.searchParams.get("idQuickGame") + '&chrono=00:' + min + ":" + sec + '&scoreDisplayed=' + document.getElementById("E-Rouge").innerHTML);
         setTimeout(loadNum, 2000); // makes it reload every 5 sec
       }
       loadNum(); // start the process...
@@ -225,6 +225,7 @@ while ($row = mysqli_fetch_assoc($resultat)) {
 
       function loadNum() {
         $('#E-Bleu').load('./scoresFromDatabaseTeam2.php?idQuickGame=' + url.searchParams.get("idQuickGame"));
+        $('#histo-qmatch').load('./scriptAddButTeam2.php?idQuickGame=' + url.searchParams.get("idQuickGame") + '&chrono=00:' + min + ":" + sec + '&scoreDisplayed=' + document.getElementById("E-Bleu").innerHTML);
         setTimeout(loadNum, 2000); // makes it reload every 5 sec
       }
       loadNum(); // start the process...

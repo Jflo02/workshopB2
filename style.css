@@ -520,8 +520,9 @@ tfoot {
   border-radius: 20px;
   width: 100%;
 }
-.classement2 {
-  width: 100%;
+.classement a {
+text-decoration: none;
+color: #dbe5ff;
 }
 .classement thead tr th {
   background-color:#5E8AFF ;

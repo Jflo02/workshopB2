@@ -52,7 +52,7 @@
         </a>
         <span class="tooltip">Profile</span>
       </li>
-
+    <!-- fin de la liste -->
     </ul>
   </div>
   </div>
